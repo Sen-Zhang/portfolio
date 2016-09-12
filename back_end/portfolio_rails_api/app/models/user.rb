@@ -5,5 +5,5 @@ class User < ApplicationRecord
   has_many :accounts, through: :assignments
   has_many :roles, through: :assignments
 
-  validate :email, presence: true
+  validates :email, presence: true
 end

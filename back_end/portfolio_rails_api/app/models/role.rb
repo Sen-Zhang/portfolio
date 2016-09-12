@@ -3,6 +3,6 @@ class Role < ApplicationRecord
   has_many :users, through: :assignments
   has_many :accounts, through: :assignments
 
-  validate :name, presence: true
-  validate :title, presence: true
+  validates :name, presence: true
+  validates :title, presence: true
 end
