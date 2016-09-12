@@ -7,6 +7,9 @@ class DbInit < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    add_index :accounts, :name, unique: true
+    add_index :accounts, :subdomain, unique: true
+
     create_table :users do |t|
       t.string :email, null: false
       t.string :password_digest, null: false
@@ -16,12 +19,17 @@ class DbInit < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
+    add_index :users, :email, unique: true
+
     create_table :roles do |t|
       t.string :name, null: false, limit: 20
       t.string :title, null: false, limit: 20
 
       t.timestamps
     end
+
+    add_index :roles, :name, unique: true
+    add_index :roles, :title, unique: true
 
     create_table :assignments do |t|
       t.references :account, index: true
