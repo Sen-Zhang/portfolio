@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     scope module: 'api' do
       namespace :v1, default: {format: :json} do
 
+        post 'sign_in', to: 'sessions#create'
+
         resources :users
       end
     end
