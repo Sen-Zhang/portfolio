@@ -28,5 +28,9 @@ class DbInit < ActiveRecord::Migration[5.0]
       t.references :user, index: true
       t.references :role, index: true
     end
+
+    add_foreign_key :assignments, :accounts, on_delete: :cascade
+    add_foreign_key :assignments, :users, on_delete: :cascade
+    add_foreign_key :assignments, :roles, on_delete: :cascade
   end
 end

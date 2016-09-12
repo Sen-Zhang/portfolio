@@ -47,4 +47,7 @@ ActiveRecord::Schema.define(version: 20160912172400) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "assignments", "accounts", on_delete: :cascade
+  add_foreign_key "assignments", "roles", on_delete: :cascade
+  add_foreign_key "assignments", "users", on_delete: :cascade
 end
