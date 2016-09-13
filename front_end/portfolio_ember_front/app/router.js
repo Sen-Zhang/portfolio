@@ -6,7 +6,12 @@ const Router = Ember.Router.extend({
   rootURL: config.rootURL
 });
 
-Router.map(function() {
+Router.map(function () {
+  this.route('sessions', function () {
+    this.route('new');
+  });
+
+  this.route('page-not-found', {path: '/*wildcard'});
 });
 
 export default Router;

@@ -26,6 +26,7 @@ module.exports = function (defaults) {
 
   // css
   app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
+  app.import('vendor/css/bootstrap-paper.min.css');
   app.import('bower_components/font-awesome/css/font-awesome.min.css');
 
   // fonts
