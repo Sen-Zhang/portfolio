@@ -11,6 +11,14 @@ Router.map(function () {
     this.route('new');
   });
 
+  this.route('initiatives', function () {
+    this.route('new');
+    this.route('show', {path: '/:initiative_id'});
+  });
+
+  this.route('support');
+  this.route('settings');
+
   this.route('page-not-found', {path: '/*wildcard'});
 });
 

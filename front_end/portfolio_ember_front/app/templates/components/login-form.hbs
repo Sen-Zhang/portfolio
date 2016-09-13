@@ -1,0 +1,17 @@
+{{#if loginFailure}}
+  <div class="alert alert-danger">Invalid email or password</div>
+{{/if}}
+
+<h3 class="text-center">Sign In to Continue</h3>
+
+<form {{action 'authenticate' on='submit'}}>
+  <div class="form-group">
+    <label for="email">Email</label>
+    {{input id='email' class='form-control' placeholder='foo@bar.com' value=email}}
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    {{input type='password' id='password' class='form-control' placeholder='******' value=password}}
+  </div>
+  <button type="submit" class="btn btn-primary">Sign In</button>
+</form>
