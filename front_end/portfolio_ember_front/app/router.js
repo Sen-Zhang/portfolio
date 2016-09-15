@@ -16,6 +16,11 @@ Router.map(function () {
     this.route('show', {path: '/:initiative_id'});
   });
 
+  this.route('users', function () {
+    this.route('new');
+    this.route('show', {path: '/:user_id'});
+  });
+
   this.route('support');
   this.route('settings');
 

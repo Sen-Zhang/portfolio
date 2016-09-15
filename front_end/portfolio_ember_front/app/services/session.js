@@ -2,8 +2,21 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Service.extend({
+  authPath: config.authPath,
   site: location.hostname.split('.')[0],
   session: {},
+
+  isAuthenticated: Ember.computed('session', function () {
+    return this._getToken() !== undefined;
+  }),
+
+  token: Ember.computed('session', function () {
+    return this._getToken();
+  }),
+
+  user: Ember.computed('session', function () {
+    return this._getUser();
+  }),
 
   authenticate(creds) {
     var _this = this;
@@ -11,7 +24,7 @@ export default Ember.Service.extend({
     return new Ember.RSVP.Promise((resolve) => {
       Ember.$.ajax({
         method: 'POST',
-        url: config.auth_path,
+        url: _this.authPath,
         data: creds,
         dataType: 'json'
       }).then((res) => {
@@ -49,13 +62,5 @@ export default Ember.Service.extend({
 
   _getUser() {
     return this._getSession().user;
-  },
-
-  isAuthenticated: Ember.computed('session', function () {
-    return this._getToken() !== undefined;
-  }),
-
-  user: Ember.computed(function () {
-    return this._getUser();
-  })
+  }
 });

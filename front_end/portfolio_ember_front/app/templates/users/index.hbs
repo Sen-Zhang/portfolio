@@ -1,0 +1,22 @@
+{{outlet}}
+
+<h3>Users</h3>
+
+<table class="table table-striped table-hover ">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Email</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |u|}}
+    <tr>
+      <td>{{u.id}}</td>
+      <td>{{u.email}}</td>
+      <td>{{#link-to 'users.show' u.id}}{{u.fullName}}{{/link-to}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

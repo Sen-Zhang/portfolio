@@ -25,8 +25,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.auth_path = 'http://api.lvh.me:3000/v1/sign_in'
-    ENV.host = 'lvh.me:4200'
+    ENV.apiHost = 'http://api.lvh.me:3000';
+    ENV.apiVersion = 'v1';
+    ENV.authPath = ENV.apiHost + '/' + ENV.apiVersion + '/sign_in';
+    ENV.host = 'lvh.me:4200';
   }
 
   if (environment === 'test') {
