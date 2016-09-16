@@ -11,6 +11,8 @@ describe Account, type: :model do
 
   it { is_expected.to have_many :assignments }
 
+  it { is_expected.to have_many :initiatives }
+
   it { is_expected.to have_many(:users).through(:assignments) }
 
   it { is_expected.to have_many(:roles).through(:assignments) }

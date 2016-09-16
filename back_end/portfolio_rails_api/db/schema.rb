@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912172400) do
+ActiveRecord::Schema.define(version: 20160916180126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20160912172400) do
     t.index ["account_id"], name: "index_assignments_on_account_id", using: :btree
     t.index ["role_id"], name: "index_assignments_on_role_id", using: :btree
     t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
+  end
+
+  create_table "initiatives", force: :cascade do |t|
+    t.string   "title",        limit: 50,                      null: false
+    t.string   "description",  limit: 500
+    t.string   "time_period",  limit: 20,                      null: false
+    t.string   "population",                                   null: false
+    t.integer  "employee_num",             default: 0,         null: false
+    t.string   "countries",                                    null: false
+    t.string   "language",                 default: "English", null: false
+    t.date     "launch_date"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "account_id"
+    t.index ["account_id"], name: "index_initiatives_on_account_id", using: :btree
+    t.index ["title", "account_id"], name: "index_initiatives_on_title_and_account_id", unique: true, using: :btree
   end
 
   create_table "roles", force: :cascade do |t|
@@ -55,4 +71,5 @@ ActiveRecord::Schema.define(version: 20160912172400) do
   add_foreign_key "assignments", "accounts", on_delete: :cascade
   add_foreign_key "assignments", "roles", on_delete: :cascade
   add_foreign_key "assignments", "users", on_delete: :cascade
+  add_foreign_key "initiatives", "accounts", on_delete: :cascade
 end

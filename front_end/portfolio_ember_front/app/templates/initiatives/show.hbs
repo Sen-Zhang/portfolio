@@ -1,3 +1,32 @@
 {{outlet}}
 
-<h2>The Initiative</h2>
+<div class="row">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Initiative Info</h3>
+    </div>
+    <div class="panel-body">
+      <div>
+        <strong>Title: </strong><span>{{model.title}}</span>
+      </div>
+      <div>
+        <strong>Time Period: </strong><span>{{model.timePeriod}}</span>
+      </div>
+      <div>
+        <strong>Population: </strong><span>{{model.population}}</span>
+      </div>
+      <div>
+        <strong>Target Employee Number: </strong><span>{{model.employeeNum}}</span>
+      </div>
+      <div>
+        <strong>Countries: </strong><span>{{model.countries}}</span>
+      </div>
+      <div>
+        <strong>Language: </strong><span>{{model.language}}</span>
+      </div>
+      <div>
+        <strong>Launch Date: </strong><span>{{format-date model.launchDate}}</span>
+      </div>
+    </div>
+  </div>
+</div>

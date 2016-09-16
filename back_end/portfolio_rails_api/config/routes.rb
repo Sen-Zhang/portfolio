@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
         post 'sign_in', to: 'sessions#create'
 
-        resources :users
+        resources :users, only: [:index, :show, :update, :destroy]
+        resources :initiatives, only: [:index, :show, :update, :destroy]
       end
     end
   end

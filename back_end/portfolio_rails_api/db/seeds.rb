@@ -23,4 +23,26 @@ if Rails.env.development? || Rails.env.test?
 
   Assignment.create(account: admin_account, role: Role.admin, user: admin_user)
   Assignment.create(account: sample_account, role: Role.user, user: test_user)
+
+  sample_account.initiatives.create(
+    title:        'Open Enrollment',
+    description:  'This is an initiative of account Foo',
+    time_period:  'Ongoing',
+    population:   'All',
+    employee_num: 200,
+    countries:    'USA',
+    language:     'English',
+    launch_date:  Date.today
+  )
+
+  sample_account.initiatives.create(
+    title:        'Financial Wellness',
+    description:  'This is an initiative of account Foo',
+    time_period:  '2017',
+    population:   'All',
+    employee_num: 500,
+    countries:    'USA,Canada',
+    language:     'English',
+    launch_date:  Date.yesterday
+  )
 end
