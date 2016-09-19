@@ -1,0 +1,22 @@
+h3 Initiatives
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Title
+      th Time Period
+      th Target Population
+      th Employee Number
+      th Target Countries
+      th Language
+      th Launch Date
+  tbody
+    - initiatives.each do |i|
+      tr
+        td = link_to i.title, initiative_path(i)
+        td = i.time_period
+        td = i.population
+        td = i.employee_num
+        td = i.countries.gsub(',', ', ')
+        td = i.language
+        td = i.launch_date

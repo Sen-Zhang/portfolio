@@ -1,0 +1,8 @@
+div.col-sm-6.col-sm-offset-3
+  h3.text-center Sign In to Continue
+  = render partial: 'shared/flash_msg'
+
+  = simple_form_for :session, url: sessions_path do |f|
+    = f.input :email, required: false, input_html: {placeholder: 'foo@bar.com'}
+    = f.input :password, required: false, input_html: {placeholder: '*******'}
+    = f.submit 'Sign In', class: 'btn btn-primary'

@@ -30,7 +30,6 @@ class Api::V1::ApplicationController < ActionController::API
       render json: {errors: ['Expired Signature']}, status: :unauthorized
     rescue JWT::VerificationError
       render json: {errors: ['Invalid Signature']}, status: :unauthorized
-      return false
     end
   end
 

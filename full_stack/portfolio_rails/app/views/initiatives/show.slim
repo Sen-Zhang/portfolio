@@ -1,0 +1,30 @@
+div.row
+  div.panel.panel-primary
+    div.panel-heading
+      h3.panel-title Initiative Info
+
+    div.panel-body
+      div
+        strong Title:&nbsp;
+        span = initiative.title
+      div
+        strong Time Period:&nbsp;
+        span = initiative.time_period
+      div
+        strong Population:&nbsp;
+        span = initiative.population
+      div
+        strong Target Employee Number:&nbsp;
+        span = initiative.employee_num
+      div
+        strong Countries:&nbsp;
+        span = initiative.countries.gsub(',', ', ')
+      div
+        strong Language:&nbsp;
+        span = initiative.language
+      div
+        strong Launch Date:&nbsp;
+        span = initiative.launch_date.strftime('%m/%d/%Y')
+      br
+      div
+        = link_to 'All Initiatives', initiatives_path, class: 'btn btn-primary'

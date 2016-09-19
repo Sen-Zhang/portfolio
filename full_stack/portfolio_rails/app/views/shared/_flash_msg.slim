@@ -1,0 +1,15 @@
+- if flash[:success].present?
+  div.alert.alert-success
+    = flash[:success]
+
+- if flash[:info].present?
+  div.alert.alert-info
+    = flash[:info]
+
+- if flash[:warning].present?
+  div.alert.alert-warning
+    = flash[:warning]
+
+- if flash[:error].present?
+  div.alert.alert-danger
+    = flash[:error]

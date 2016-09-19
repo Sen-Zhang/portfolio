@@ -1,0 +1,22 @@
+{
+  "name": "portfolio_rails",
+  "homepage": "https://github.com/Sen-Zhang/portfolio",
+  "authors": [
+    "Sen Zhang"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "jquery-ujs": "^1.2.2"
+  }
+}
