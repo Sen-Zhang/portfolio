@@ -1,24 +1,31 @@
-# README
+### Rails Full-stack
+#### Requirement
+  - bower
+  - ruby 2.3.1
+  - bundler
+  - PostgreSQL
+  
+#### Setup
+1. Set up environment.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+        % bin/setup
 
-Things you may want to cover:
+2. Verify that the app is up and running.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+        % open http://foo.app.lvh.me:3000
+#### sample account
+You can sign in to the demo account with the following info.
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fb@gs.com</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>

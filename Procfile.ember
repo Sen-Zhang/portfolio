@@ -1,0 +1,2 @@
+back_end: cd back_end/portfolio_rails_api && bin/setup
+front_end: cd front_end/portfolio_ember_front && npm install && bower install && ember s -p 4200
