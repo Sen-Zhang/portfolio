@@ -3,6 +3,10 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './stores';
 import App from './containers/App';
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
+
+require('./styles/bootstrap-paper.min.css');
 
 const store = configureStore();
 

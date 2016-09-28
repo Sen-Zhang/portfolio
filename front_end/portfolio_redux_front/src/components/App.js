@@ -1,17 +1,16 @@
 import React from 'react';
-import './app.css';
-
-const yeomanImage = require('../images/yeoman.png');
-
+import Header from './layouts/Header';
+import Footer from './layouts/Footer';
 class AppComponent extends React.Component {
 
   render() {
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">
-          Please edit <code>src/components/App.js</code> to get started!
+      <div>
+        <Header/>
+        <div className="container container-fluid">
+          body
         </div>
+        <Footer/>
       </div>
     );
   }

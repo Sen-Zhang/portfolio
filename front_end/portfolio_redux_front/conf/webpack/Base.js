@@ -161,6 +161,18 @@ class WebpackBaseConfig {
             loaders: 'json'
           },
           {
+            test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "url"
+          },
+          {
+            test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+            loader: 'file'
+          },
+          {
+            test: /bootstrap.+\.(jsx|js)$/,
+            loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+          },
+          {
             test: /\.(js|jsx)$/,
             include: [].concat(
               this.includedPackages,
