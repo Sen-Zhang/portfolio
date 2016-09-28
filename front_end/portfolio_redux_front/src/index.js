@@ -1,12 +1,14 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 import configureStore from './stores';
-import App from './containers/App';
-import 'jquery';
-import 'bootstrap/dist/js/bootstrap';
+import App from './components/containers/App';
 
-require('./styles/bootstrap-paper.min.css');
+/* css */
+import './assets/styles/index';
+
+/* 3rd party js libs */
+import './assets/javascripts/index';
 
 const store = configureStore();
 

@@ -21,9 +21,7 @@
           "components/",
           "stores/",
           "actions/",
-          "sources/",
-          "styles/",
-          "images/"
+          "assets/"
         ]
     }]
   }

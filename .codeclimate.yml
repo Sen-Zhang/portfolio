@@ -1,0 +1,13 @@
+exclude_paths:
+- "font_end/portfolio_redux_front/"
+
+engines:
+  eslint:
+    enabled: true
+    checks:
+      no-multi-spaces:
+        enabled: false
+  csslint:
+    enabled: true
+  fixme:
+    enabled: false
