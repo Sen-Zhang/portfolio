@@ -11,12 +11,16 @@ import React, {
 import '../../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Main from '../App';
+import App from '../layouts/App';
 
-class App extends Component {
+class AppContainer extends Component {
   render() {
     const { actions } = this.props;
-    return <Main actions={actions} />;
+    return (
+      <App actions={actions}>
+        {this.props.children}
+      </App>
+    );
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -24,9 +28,10 @@ class App extends Component {
  * HINT: if you adjust the initial type of your reducer, you will also have to
  *       adjust it here.
  */
-App.propTypes = {
+AppContainer.propTypes = {
   actions: PropTypes.object.isRequired
 };
+
 function mapStateToProps(state) { // eslint-disable-line no-unused-vars
   const props = {};
   return props;
@@ -38,4 +43,4 @@ function mapDispatchToProps(dispatch) {
   return actionMap;
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

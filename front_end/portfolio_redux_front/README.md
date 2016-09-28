@@ -1,3 +1,6 @@
 #Redux Front End
 
-Work in progress...
+#### Setup
+
+        % npm install
+        % npm start

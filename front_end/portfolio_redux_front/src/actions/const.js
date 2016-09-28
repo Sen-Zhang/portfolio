@@ -1,1 +1,2 @@
-/* Populated by react-webpack-redux:action */
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';

@@ -10,12 +10,11 @@ class Header extends React.Component {
               className="navbar-toggle collapsed"
               data-toggle="collapse"
               data-target="#navbar_collapse">
-              <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a href="/" className="navbar-brand">Portfolio</a>
+            <a href="/" className="navbar-brand">GuideSpark</a>
           </div>
 
           <div className="collapse navbar-collapse" id="navbar_collapse">

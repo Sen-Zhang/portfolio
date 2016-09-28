@@ -1,9 +1,9 @@
-/* Exports all the actions from a single point.
+import signIn from './SignIn';
+import signOut from './SignOut';
 
-Allows to import actions like so:
+const actions = {
+  SignIn: signIn,
+  SignOut: signOut
+};
 
-import {action1, action2} from '../actions/'
-*/
-/* Populated by react-webpack-redux:action */
-const actions = {};
 module.exports = actions;
