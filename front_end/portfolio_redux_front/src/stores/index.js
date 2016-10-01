@@ -25,4 +25,6 @@ function reduxStore(initialState) {
   return store;
 }
 
-export default reduxStore;
+const store = reduxStore();
+
+export default store;

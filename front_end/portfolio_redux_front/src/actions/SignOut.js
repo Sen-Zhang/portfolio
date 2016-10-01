@@ -1,5 +1,4 @@
 import * as consts from './const';
-import config from '../config/base';
 
 export function requestSignOut() {
   return {
@@ -13,7 +12,7 @@ export function requestSignOut() {
 
 export function signOut() {
   return dispatch => {
-    localStorage.removeItem(config.site);
+    localStorage.removeItem('session');
     dispatch(requestSignOut());
     location.replace('/login');
   };

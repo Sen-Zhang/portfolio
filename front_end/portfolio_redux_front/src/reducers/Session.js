@@ -1,9 +1,8 @@
-import config from '../config/base';
 import {
   SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_FAILURE, SIGN_OUT_SUCCESS
 } from '../actions/const';
 
-const savedStore = JSON.parse(localStorage.getItem(config.site)) || {};
+const savedStore = JSON.parse(localStorage.getItem('session')) || {};
 const sessionInfo = Object.assign({},
   {
     auth_token: null,
@@ -20,7 +19,10 @@ function session(state = { session: sessionInfo }, action) {
       return {
         ...state,
         session: {
-          isAuthenticated: false
+          isAuthenticated: false,
+          invalid: false,
+          auth_token: null,
+          user: null,
         }
       };
     case SIGN_IN_SUCCESS:
@@ -29,7 +31,8 @@ function session(state = { session: sessionInfo }, action) {
         session: {
           isAuthenticated: true,
           invalid: false,
-          user: action.user
+          auth_token: action.auth_token,
+          user: action.user,
         }
       };
     case SIGN_IN_FAILURE:
@@ -37,14 +40,19 @@ function session(state = { session: sessionInfo }, action) {
         ...state,
         session: {
           isAuthenticated: false,
-          invalid: false,
+          invalid: true,
+          auth_token: null,
+          user: null,
         }
       };
     case SIGN_OUT_SUCCESS:
       return {
         ...state,
         session: {
-          isAuthenticated: false
+          isAuthenticated: false,
+          invalid: false,
+          auth_token: null,
+          user: null,
         }
       };
     default:

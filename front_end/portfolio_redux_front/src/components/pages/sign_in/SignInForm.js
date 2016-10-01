@@ -25,6 +25,7 @@ class SignInForm extends React.Component {
     }
 
     this.props.signIn({
+      account: location.hostname.split('.')[0],
       email: this.state.email,
       password: this.state.pwd
     });

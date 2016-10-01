@@ -1,11 +1,9 @@
 import * as consts from './const';
-import config from '../config/base';
+import Auth from '../api/AuthApi';
 
 function requestSignIn(creds) {
   return {
     type: consts.SIGN_IN_REQUEST,
-    isAuthenticated: false,
-    invalid: false,
     creds
   };
 }
@@ -13,34 +11,37 @@ function requestSignIn(creds) {
 function receiveSignIn(session) {
   return {
     type: consts.SIGN_IN_SUCCESS,
-    isAuthenticated: true,
-    invalid: false,
     auth_token: session.auth_token,
     user: session.user
   };
 }
 
-// function signInFail() {
-//   return {
-//     type: consts.SIGN_IN_FAILURE,
-//     isAuthenticated: false,
-//     invalid: true
-//   };
-// }
+function signInFail() {
+  return {
+    type: consts.SIGN_IN_FAILURE,
+  };
+}
 
 export function signIn(creds) {
-  const session = {
-    auth_token: 'the_auth_token',
-    user: 'Foo',
-    isAuthenticated: true,
-    invalid: false
-  };
-
   return dispatch => {
     dispatch(requestSignIn(creds));
-    localStorage.setItem(config.site, JSON.stringify(session));
-    dispatch(receiveSignIn(session));
-    location.replace('/home');
-    // dispatch(signInFail());
+    Auth.signIn(creds).then((res) => {
+      if (res.body.auth_token) {
+        const session = {
+          auth_token: res.body.auth_token,
+          user: res.body.user,
+          isAuthenticated: true,
+          invalid: false
+        };
+
+        localStorage.setItem('session', JSON.stringify(session));
+        dispatch(receiveSignIn(session));
+        location.replace('/home');
+      } else {
+        dispatch(signInFail());
+      }
+    }, () => {
+      dispatch(signInFail());
+    });
   };
 }
