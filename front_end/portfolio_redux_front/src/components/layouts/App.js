@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signOut } from '../../actions/SignOut';
+import { signOut } from '../../actions/session';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -10,7 +10,7 @@ class App extends React.Component {
 
     if (!session.isAuthenticated &&
       location.pathname !== '/login') {
-      location.replace('login');
+      location.replace('/login');
     }
   }
 
@@ -30,7 +30,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state.session;
+  return {
+    session: state.session
+  };
 }
 
 export default connect(mapStateToProps)(App);

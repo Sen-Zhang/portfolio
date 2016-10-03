@@ -2,10 +2,15 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import reducers from '../reducers/index';
+import { loadState, saveState } from './localStorage';
+import throttle from 'lodash/throttle';
 
-const createStoreWithMiddleware = applyMiddleware(thunkMiddleware, apiMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+  thunkMiddleware,
+  apiMiddleware
+)(createStore);
 
-function reduxStore(initialState) {
+const reduxStore = (initialState) => {
   const store = createStoreWithMiddleware(
     reducers,
     initialState,
@@ -23,8 +28,18 @@ function reduxStore(initialState) {
   }
 
   return store;
-}
+};
 
-const store = reduxStore();
+const store = reduxStore(loadState());
+
+store.subscribe(throttle(() => {
+  const session = store.getState().session;
+
+  saveState({ session });
+
+  if (!session.isAuthenticated && location.pathname !== '/login') {
+    location.replace('/login');
+  }
+}, 1000));
 
 export default store;

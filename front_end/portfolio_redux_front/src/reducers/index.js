@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 
-import session from './Session';
+import session from './session';
 
 const reducers = {
-  routing: routerReducer,
+  routing,
   session
 };
 const combined = combineReducers(reducers);

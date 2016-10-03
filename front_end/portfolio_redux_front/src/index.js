@@ -1,23 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import Root from './components/layouts/Root';
 import store from './stores/index';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import routes from './routes';
 
 /* css */
-import './assets/styles/index';
+import './styles/index';
 
 /* 3rd party js libs */
-import './assets/javascripts/index';
-
-const history = syncHistoryWithStore(browserHistory, store);
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
 
 render(
-  <Provider store={store}>
-    <Router history={history} routes={routes}/>
-  </Provider>,
+  <Root store={store}/>,
 
   document.getElementById('app')
 );

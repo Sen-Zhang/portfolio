@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../../../actions/SignIn';
+import { receiveSignIn } from '../../../actions/session';
 import SignInForm from './SignInForm';
 
 class SignIn extends React.Component {
+  componentWillMount() {
+    const { session } = this.props;
+
+    if (session.isAuthenticated) {
+      location.replace('/');
+    }
+  }
+
   render() {
-    const { dispatch, session } = this.props;
+    const { signIn } = this.props;
 
     return (
       <div className="row">
         <div className="col-sm-6 col-sm-offset-3">
           <h3 className="text-center">Sign In to Continue</h3>
-          <SignInForm
-            signIn={creds => dispatch(signIn(creds))}
-            invalid={session.invalid}/>
+          <SignInForm signIn={signIn}/>
         </div>
       </div>
     );
@@ -21,7 +27,9 @@ class SignIn extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state.session;
+  return {
+    session: state.session
+  };
 }
 
-export default connect(mapStateToProps)(SignIn);
+export default connect(mapStateToProps, { signIn: receiveSignIn })(SignIn);

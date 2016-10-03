@@ -1,22 +1,11 @@
 import React from 'react';
+import Auth from '../../../api/AuthApi';
 
 class SignInForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { email: '', pwd: '' };
-
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangePwd = this.handleChangePwd.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChangeEmail(e) {
-    this.setState({ email: e.target.value });
-  }
-
-  handleChangePwd(e) {
-    this.setState({ pwd: e.target.value });
+    this.state = { invalid: false };
   }
 
   handleSubmit(e) {
@@ -24,15 +13,22 @@ class SignInForm extends React.Component {
       e.preventDefault();
     }
 
-    this.props.signIn({
-      account: location.hostname.split('.')[0],
-      email: this.state.email,
-      password: this.state.pwd
+    Auth.signIn({
+      email: this.email.value.trim(),
+      password: this.pwd.value.trim()
+    }).then((res) => {
+      if (res && res.auth_token) {
+        this.props.signIn(res.auth_token, res.user);
+      } else {
+        this.setState({ invalid: true });
+      }
+    }, () => {
+      this.setState({ invalid: true });
     });
   }
 
   renderError() {
-    if (this.props.invalid) {
+    if (this.state.invalid) {
       return (
         <div className="alert alert-danger">
           Invalid email or password
@@ -47,15 +43,16 @@ class SignInForm extends React.Component {
     return (
       <div>
         {this.renderError()}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
               type="text"
               className="form-control"
               placeholder="foo@bar.com"
-              value={this.state.email}
-              onChange={this.handleChangeEmail}/>
+              ref={input => {
+                this.email = input;
+              }}/>
           </div>
           <div className="form-group">
             <label className="password">Password</label>
@@ -63,8 +60,9 @@ class SignInForm extends React.Component {
               type="password"
               className="form-control"
               placeholder="******"
-              value={this.state.pwd}
-              onChange={this.handleChangePwd}/>
+              ref={input => {
+                this.pwd = input;
+              }}/>
           </div>
           <button type="submit" className="btn btn-primary">Sign In</button>
         </form>

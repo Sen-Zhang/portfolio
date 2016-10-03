@@ -6,15 +6,15 @@ class Api::V1::ApplicationController < ActionController::API
   before_action :authenticate!
 
   def curr_user
-    @current_user ||= User.find(decoded_auth_token[:user_id])
-  end
-
-  def curr_account
-    @current_account ||= Account.find(decoded_auth_token[:account_id])
+    begin
+      @current_user ||= User.find(decoded_auth_token[:user_id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: ['Invalid Signature'] }, status: :unauthorized
+    end
   end
 
   rescue_from ActiveRecord::RecordNotFound do
-    render json: {status: :not_found}
+    render json: { status: :not_found }
   end
 
   private
@@ -23,13 +23,12 @@ class Api::V1::ApplicationController < ActionController::API
     begin
       decoded_auth_token
       curr_user
-      curr_account
     rescue JWT::MissingTokenError
-      render json: {errors: ['Token is missing']}, status: :unauthorized
+      render json: { errors: ['Token is missing'] }, status: :unauthorized
     rescue JWT::ExpiredSignature
-      render json: {errors: ['Expired Signature']}, status: :unauthorized
+      render json: { errors: ['Expired Signature'] }, status: :unauthorized
     rescue JWT::VerificationError
-      render json: {errors: ['Invalid Signature']}, status: :unauthorized
+      render json: { errors: ['Invalid Signature'] }, status: :unauthorized
     end
   end
 
@@ -42,5 +41,5 @@ class Api::V1::ApplicationController < ActionController::API
     request.headers['Authorization'].split(' ').last
   end
 
-  helper_method :curr_user, :curr_account
+  helper_method :curr_user
 end

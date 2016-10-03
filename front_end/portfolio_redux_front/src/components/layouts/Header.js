@@ -7,8 +7,6 @@ class Header extends React.Component {
     if (session.isAuthenticated) {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="/settings">Settings</a></li>
-          <li><a href="/support">Support</a></li>
           <li className="dropdown">
             <a
               href="#"
