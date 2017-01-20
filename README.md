@@ -3,6 +3,9 @@
 [![Code Climate](https://codeclimate.com/github/Sen-Zhang/portfolio/badges/gpa.svg)](https://codeclimate.com/github/Sen-Zhang/portfolio)
 [![Test Coverage](https://codeclimate.com/github/Sen-Zhang/portfolio/badges/coverage.svg)](https://codeclimate.com/github/Sen-Zhang/portfolio/coverage)
 
+[![Join the chat at https://gitter.im/portfolio-architecture/api](https://badges.gitter.im/portfolio-architecture/api.svg)](https://gitter.im/portfolio-architecture/api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/portfolio-architecture/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/portfolio-architecture/Lobby)
+
 ## Documentation
 
 ### Ember + Rails API (5.0+)
